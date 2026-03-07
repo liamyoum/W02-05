@@ -101,7 +101,7 @@ def extended_gcd(a, b):
     gcd, x1, y1 = extended_gcd(b, a % b)
     # 역추적하며 x, y 계산
     x = y1
-    y = x1 - ()
+    y = x1 - (a // b) * y1
     return (gcd, x, y)
 
 result2 = extended_gcd(48, 18)
