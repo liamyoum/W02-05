@@ -79,7 +79,7 @@ def lcm(a, b):
         최소공배수
     """
     # TODO: LCM 계산
-    return a * b / gcd(a, b)
+    return a * b // gcd(a, b)
 
 @visualizer.visualize(param_names=["a", "b"])
 def extended_gcd(a, b):
@@ -123,12 +123,21 @@ def is_prime(n):
     # n이 2보다 작으면 False
     if n < 2:
         return False
-
-    # 2부터 sqrt(n)까지 나누어 떨어지는지 확인
-    if     
-    # 3부터 sqrt(n)까지 홀수만 확인
     
+    # 2는 소수
+    if n == 2:
+        return True
 
+    # 짝수는 다 소수 아님
+    if n % 2 == 0:
+        return False
+
+    # 3부터 sqrt(n)까지 홀수만 확인
+    for i in range(3, int(n ** 0.5) + 1, 2):
+        if n % i == 0:
+            return False
+        
+    return True
 # 테스트 케이스
 if __name__ == "__main__":
     # 테스트 케이스 1: GCD와 LCM
