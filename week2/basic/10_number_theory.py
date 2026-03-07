@@ -24,6 +24,10 @@
 - LCM 공식: lcm(a, b) = (a × b) / gcd(a, b)
 """
 
+from function_visualizer import FunctionVisualizer
+visualizer = FunctionVisualizer()
+
+@visualizer.visualize(param_names=["a", "b"])
 def gcd(a, b):
     """
     유클리드 호제법을 사용한 최대공약수 계산
@@ -36,8 +40,15 @@ def gcd(a, b):
     """
     # TODO: 유클리드 호제법 구현
     # base case: b가 0이면 a 반환
+    if b == 0:
+        return a
     # recursive를 이용 
-    pass
+    return gcd(b, a % b)
+
+result1 = gcd(48, 18)
+
+visualizer.render("gcd", "png")
+
 
 def gcd_iterative(a, b):
     """
@@ -51,7 +62,11 @@ def gcd_iterative(a, b):
     """
     # TODO: 반복문으로 구현
     # b가 0이 될 때까지 반복
-    pass
+    while b != 0:
+        tmp = b
+        b = a % b
+        a = tmp
+    return a
 
 def lcm(a, b):
     """
@@ -64,8 +79,9 @@ def lcm(a, b):
         최소공배수
     """
     # TODO: LCM 계산
-    pass
+    return a * b / gcd(a, b)
 
+@visualizer.visualize(param_names=["a", "b"])
 def extended_gcd(a, b):
     """
     확장 유클리드 호제법
@@ -78,10 +94,20 @@ def extended_gcd(a, b):
         (gcd, x, y) 튜플
     """
     # TODO: 확장 유클리드 호제법 구현
-    # base case: b가 0이면 (a, 1, 0) 반환    
+    # base case: b가 0이면 (a, 1, 0) 반환   최대공약수, x, y 반환된 것 
+    if b == 0:
+        return (a, 1, 0)
     # recursive case
+    gcd, x1, y1 = extended_gcd(b, a % b)
     # 역추적하며 x, y 계산
-    pass
+    x = y1
+    y = x1 - ()
+    return (gcd, x, y)
+
+result2 = extended_gcd(48, 18)
+
+visualizer.render("extended_gcd", "png")
+    
 
 def is_prime(n):
     """
@@ -95,9 +121,13 @@ def is_prime(n):
     """
     # TODO: 소수 판별 구현
     # n이 2보다 작으면 False
-    # 2부터 sqrt(n)까지 나누어 떨어지는지 확인    
+    if n < 2:
+        return False
+
+    # 2부터 sqrt(n)까지 나누어 떨어지는지 확인
+    if     
     # 3부터 sqrt(n)까지 홀수만 확인
-    pass 
+    
 
 # 테스트 케이스
 if __name__ == "__main__":

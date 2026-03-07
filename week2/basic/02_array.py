@@ -14,7 +14,7 @@
 예제:
 입력:
 [
-    [1, 2, 3],
+    [1, 2, 3], 
     [4, 5, 6],
     [7, 8, 9]
 ]
@@ -25,6 +25,12 @@
     [8, 5, 2],
     [9, 6, 3]
 ]
+
+[0][0] -> [0][2] | [0][1] -> [1][2] | [0][2] -> [2][2]
+[1][0] -> [0][1] | [1][1] -> [1][1] | [1][2] -> [2][1]
+2, 0 -> 0, 0 | 2, 1 -> 1, 0 | 2, 2 -> 2, 0
+
+(i, j) -> (j, n-1-i)
 
 힌트:
 - 회전 후 위치: (i, j) -> (j, n-1-i)
@@ -44,11 +50,14 @@ def rotate_matrix_90(matrix):
     n = len(matrix)
     
     # TODO: n x n 크기의 새로운 배열을 생성하세요 (0으로 초기화)
-    pass
-        
+    rotated = [[0 for _ in range(len(matrix))] for _ in range(len(matrix))]
+    
     # TODO: 원본 배열의 각 요소를 회전된 위치에 배치하세요
     # 힌트: (i, j) 위치의 요소는 회전 후 (j, n-1-i) 위치로 이동
-    pass
+    # 중첩 반복문으로 요소 하나씩 돌면서, 해당 요소를 새로운 매트릭스의(j, n-1-i)에 더하기
+    for i, row in enumerate(matrix):
+        for j, num in enumerate(row):
+            rotated[j][n-1-i] = num
     
     return rotated
 

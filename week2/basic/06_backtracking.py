@@ -21,6 +21,9 @@
 - 백트랙킹의 3단계: 선택(Choose) → 탐색(Explore) → 취소(Unchoose)
 - 현재 숫자보다 큰 숫자만 선택하여 중복 방지
 """
+from function_visualizer import FunctionVisualizer
+visualizer = FunctionVisualizer()
+
 
 def combinations(n, k):
     """
@@ -35,6 +38,7 @@ def combinations(n, k):
     """
     result = []
     
+    @visualizer.visualize(param_names=["start", "current_combination"])
     def backtrack(start, current_combination):
         """
         백트랙킹 헬퍼 함수
@@ -44,17 +48,27 @@ def combinations(n, k):
             current_combination: 현재까지 선택한 숫자들
         """
         # TODO: base case - k개를 모두 선택했으면 결과에 추가
-        pass
-        
+        if len(current_combination) == k:
+            result.append(current_combination.copy()) # 여기서 복사본 넘겨줘야함. 그냥 넘겨줄 경우, 나중에 리스트 변경 시 result에 삽입된 결과도 변경됨.
+            return # 조건이 맞을 경우 밑에 더 이상 실행할 필요 없으니까 return 해야함
         # TODO: start부터 n까지 숫자를 하나씩 시도
+        for i in range(start, n+1):
         ## TODO: 백트랙킹 3단계 구현
         ## 1. 선택(Choose)
+            current_combination.append(i)
         ## 2. 탐색(Explore)
+            backtrack(i + 1, current_combination)
         ## 3. 취소(Unchoose)
-        pass
-    
+            current_combination.pop()
+
     backtrack(1, [])
     return result
+    
+
+result_backtracking = combinations(4, 2)
+
+
+visualizer.render("backtrack", "png")
 
 def combinations_itertools_compare(n, k):
     """
@@ -95,4 +109,3 @@ if __name__ == "__main__":
     result4 = combinations(n4, k4)
     print(f"C({n4}, {k4}) = {result4}")
     print(f"총 {len(result4)}개의 조합")
-
