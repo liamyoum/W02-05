@@ -94,3 +94,8 @@ dmypy.json
 *.swo
 *~
 
+# input and output .txt files
+*.txt
+
+# function visualizer
+function_visualizer/
