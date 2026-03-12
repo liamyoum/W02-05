@@ -49,10 +49,12 @@ def combinations(n, k):
         """
         # TODO: base case - k개를 모두 선택했으면 결과에 추가
         if len(current_combination) == k:
-            result.append(current_combination.copy()) # 여기서 복사본 넘겨줘야함. 그냥 넘겨줄 경우, 나중에 리스트 변경 시 result에 삽입된 결과도 변경됨.
-            return # 조건이 맞을 경우 밑에 더 이상 실행할 필요 없으니까 return 해야함
+            result.append(current_combination.copy())
+            return
+            # 여기서 복사본 넘겨줘야함. 그냥 넘겨줄 경우, 나중에 리스트 변경 시 result에 삽입된 결과도 변경됨.
+            # 조건이 맞을 경우 밑에 더 이상 실행할 필요 없으니까 return 해야함
         # TODO: start부터 n까지 숫자를 하나씩 시도
-        for i in range(start, n+1):
+        for i in range(start, n + 1):
         ## TODO: 백트랙킹 3단계 구현
         ## 1. 선택(Choose)
             current_combination.append(i)

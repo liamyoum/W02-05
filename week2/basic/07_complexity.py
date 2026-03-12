@@ -35,9 +35,9 @@ def find_duplicates_brute_force(nums):
     ## i번째 원소와 i+1 이후의 모든 원소를 비교
     ## 같은 원소를 찾으면 duplicates에 추가 (중복 추가 방지 필요)
     for i in range(0, n - 1):
-        for j in range(i+1, n):
-            if nums[i] == nums[j] and nums[i] not in duplicates:
-                duplicates.append(nums[i])
+        for j in range(i + 1, n):
+            if nums[j] == nums[i] and nums[j] not in duplicates:
+                duplicates.append(nums[j])
     
     return duplicates
 

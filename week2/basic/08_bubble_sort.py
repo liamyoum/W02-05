@@ -84,7 +84,7 @@ def last_swap_optimized(arr):
     
     while end > 0:
         last_swap = 0
-        for j in range(end):
+        for j in range(end): 
             if arr[j] > arr[j+1]:
                 arr[j], arr[j+1] = arr[j+1], arr[j]
                 last_swap = j + 1
