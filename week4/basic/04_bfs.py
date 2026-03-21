@@ -44,7 +44,6 @@ def bfs(graph, start):
         방문 순서 리스트
     """
     visited = [] # 최종 방문 순서 저장용
-    
     # TODO: 큐 생성 및 시작 정점 추가
     queue = deque()
     queue.append(start)
@@ -54,14 +53,14 @@ def bfs(graph, start):
     # TODO: 큐가 빌 때까지 반복
     while queue:
     ## 큐에서 정점 꺼내기
-        node = queue.popleft()
-        visited.append(node)
+        vertex = queue.popleft()
+        visited.append(vertex)
     ## 인접한 정점들 확인
-        for neighbor in graph[node]:
+        for adjacent in graph[vertex]:
     ## 방문하지 않은 정점이면 큐에 추가
-            if neighbor not in visited_set:
-                queue.append(neighbor)
-                visited_set.add(neighbor)
+            if adjacent not in visited_set:
+                queue.append(adjacent)
+                visited_set.add(adjacent)
     return visited
 
 # 테스트 케이스
