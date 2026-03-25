@@ -99,3 +99,7 @@ dmypy.json
 
 # function visualizer
 function_visualizer/
+
+# 수요코딩회 Projects
+week2/surfing-go/
+week3/week3-redis/
