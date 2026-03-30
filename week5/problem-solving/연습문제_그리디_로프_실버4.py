@@ -1,4 +1,4 @@
-# DP - 로프 (백준 실버 4)
+# 그리디 - 로프 (백준 실버 4)
 # 문제 링크: https://www.acmicpc.net/problem/2217
 import sys
 input = sys.stdin.readline
